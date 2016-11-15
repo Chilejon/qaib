@@ -1,0 +1,39 @@
+﻿@using System.Runtime.InteropServices.ComTypes
+@model IEnumerable<QIAB.Models.QuestionType>
+
+@{
+    ViewBag.Title = "Types";
+}
+
+<h2>Questions</h2>
+
+<p>
+    <a asp-controller="Type" asp-action="Create">Create Type</a>
+</p>
+
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Type</th>
+        <th>Special</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @{
+                    var Id = item.Id.ToString();
+                    Id = Id.Substring(0, 5); 
+                }
+                @Id
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Special)
+            </td>
+        </tr>
+    }
+</table>

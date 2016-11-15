@@ -1,0 +1,61 @@
+﻿@using System.Runtime.InteropServices.ComTypes
+@model IEnumerable<QIAB.Models.QuestionModel>
+
+@{
+    ViewBag.Title = "Questions";
+}
+
+<h2>Questions</h2>
+
+<p>
+    <a asp-controller="Question" asp-action="Create">Create Question</a>
+</p>
+
+<div class="form-group">
+    <div class="col-md-10">Types</div>
+    <div class="col-md-10">
+        @Html.DropDownList("QuestionTypeId", new SelectList(ViewBag.typeList, "Type", "Type"))
+    </div>
+
+
+</div>
+
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Question</th>
+        <th>Potential Answers</th>
+        <th>Answer</th>
+        <th>Question Type</th>
+        <th>Date Entered</th>
+        <th>Edit</th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @{
+                    var Id = item.Id.ToString();
+                    Id = Id.Substring(0, 5); 
+                }
+                @Id
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Question)
+            </td>
+        <td>@Html.DisplayFor(modelItem => item.PotAnswer1) - @Html.DisplayFor(modelItem => item.PotAnswer2) - @Html.DisplayFor(modelItem => item.PotAnswer3)</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Answer)
+            </td>
+            <td>@Html.DisplayFor(modelItem => item.QuestionTypeId)</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateEntered)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", "Question", new { Id = item.Id })
+            </td>
+        </tr>
+    }
+</table>

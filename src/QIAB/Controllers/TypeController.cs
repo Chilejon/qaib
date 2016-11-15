@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using QIAB.Models;
+using QIAB.Services;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -34,9 +35,17 @@ namespace QIAB.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.QuestionTypes.Add(questionType);
-                _context.SaveChanges();
-                return RedirectToAction("Index");
+                TypeServices typeServices = new TypeServices();
+                if (!typeServices.IsAlreadyType(questionType.Type))
+                {
+                    _context.QuestionTypes.Add(questionType);
+                    _context.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return View(questionType);
+                }
             }
 
             return View(questionType);

@@ -1,0 +1,8 @@
+c:\code\QIAB\Test\bin\Debug\Test.dll
+c:\code\QIAB\Test\bin\Debug\Test.pdb
+c:\code\QIAB\Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+c:\code\QIAB\Test\bin\Debug\QIAB.dll
+c:\code\QIAB\Test\bin\Debug\QIAB.pdb
+c:\code\QIAB\Test\obj\Debug\Test.csprojResolveAssemblyReference.cache
+c:\code\QIAB\Test\obj\Debug\Test.dll
+c:\code\QIAB\Test\obj\Debug\Test.pdb
